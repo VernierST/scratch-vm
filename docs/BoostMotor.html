@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>WeDo2 - Documentation</title>
+    <title>BoostMotor - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -31,7 +31,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">WeDo2</h1>
+    <h1 class="page-title">BoostMotor</h1>
     
 
     
@@ -44,10 +44,10 @@
 <header>
     
         <h2>
-        WeDo2
+        BoostMotor
         </h2>
         
-            <div class="class-description"><p>Manage communication with a WeDo 2.0 peripheral over a Bluetooth Low Energy client socket.</p></div>
+            <div class="class-description"><p>Manage power, direction, position, and timers for one Boost motor.</p></div>
         
     
 </header>
@@ -62,7 +62,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="WeDo2"><span class="type-signature"></span>new WeDo2<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="BoostMotor"><span class="type-signature"></span>new BoostMotor<span class="signature">(parent, index)</span><span class="type-signature"></span></h4>
 
     
 
@@ -108,6 +108,9 @@
 
 
 
+<div class="description">
+    <p>Construct a Boost Motor instance.</p>
+</div>
 
 
 
@@ -116,6 +119,79 @@
 
 
 
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>parent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Boost.html">Boost</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the Boost peripheral which owns this motor.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the zero-based index of this motor on its parent peripheral.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -151,7 +227,7 @@
 
         
             
-<h4 class="name" id="_batteryLevelIntervalId"><span class="type-signature">(private) </span>_batteryLevelIntervalId<span class="type-signature"> :number</span></h4>
+<h4 class="name" id="_direction"><span class="type-signature">(private) </span>_direction<span class="type-signature"> :number</span></h4>
 
 
 
@@ -197,7 +273,7 @@
 
 
 <div class="description">
-    <p>An interval id for the battery check interval.</p>
+    <p>This motor's current direction: 1 for &quot;this way&quot; or -1 for &quot;that way&quot;</p>
 </div>
 
 
@@ -219,7 +295,7 @@
 
         
             
-<h4 class="name" id="_ble"><span class="type-signature">(private) </span>_ble<span class="type-signature"> :<a href="BLE.html">BLE</a></span></h4>
+<h4 class="name" id="_index"><span class="type-signature">(private) </span>_index<span class="type-signature"> :int</span></h4>
 
 
 
@@ -265,7 +341,7 @@
 
 
 <div class="description">
-    <p>The Bluetooth connection socket for reading/writing peripheral data.</p>
+    <p>The zero-based index of this motor on its parent peripheral.</p>
 </div>
 
 
@@ -274,7 +350,7 @@
     <ul>
         <li>
             
-<span class="param-type"><a href="BLE.html">BLE</a></span>
+<span class="param-type">int</span>
 
 
         </li>
@@ -287,7 +363,7 @@
 
         
             
-<h4 class="name" id="_extensionId"><span class="type-signature"></span>_extensionId<span class="type-signature"></span></h4>
+<h4 class="name" id="_parent"><span class="type-signature">(private) </span>_parent<span class="type-signature"> :<a href="Boost.html">Boost</a></span></h4>
 
 
 
@@ -333,65 +409,7 @@
 
 
 <div class="description">
-    <p>The id of the extension this peripheral belongs to.</p>
-</div>
-
-
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_motors"><span class="type-signature">(private) </span>_motors<span class="type-signature"> :Array.&lt;<a href="WeDo2Motor.html">WeDo2Motor</a>></span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>The motors which this WeDo 2.0 could possibly have.</p>
+    <p>The Boost peripheral which owns this motor.</p>
 </div>
 
 
@@ -400,7 +418,7 @@
     <ul>
         <li>
             
-<span class="param-type">Array.&lt;<a href="WeDo2Motor.html">WeDo2Motor</a>></span>
+<span class="param-type"><a href="Boost.html">Boost</a></span>
 
 
         </li>
@@ -413,7 +431,7 @@
 
         
             
-<h4 class="name" id="_ports"><span class="type-signature">(private) </span>_ports<span class="type-signature"> :Array.&lt;string></span></h4>
+<h4 class="name" id="_pendingDurationTimeoutDelay"><span class="type-signature">(private) </span>_pendingDurationTimeoutDelay<span class="type-signature"> :number</span></h4>
 
 
 
@@ -459,7 +477,7 @@
 
 
 <div class="description">
-    <p>A list of the ids of the motors or sensors in ports 1 and 2.</p>
+    <p>The delay/duration of the pending duration timeout.</p>
 </div>
 
 
@@ -468,7 +486,7 @@
     <ul>
         <li>
             
-<span class="param-type">Array.&lt;string></span>
+<span class="param-type">number</span>
 
 
         </li>
@@ -481,7 +499,7 @@
 
         
             
-<h4 class="name" id="_rateLimiter"><span class="type-signature">(private) </span>_rateLimiter<span class="type-signature"> :<a href="RateLimiter.html">RateLimiter</a></span></h4>
+<h4 class="name" id="_pendingDurationTimeoutId"><span class="type-signature">(private) </span>_pendingDurationTimeoutId<span class="type-signature"> :Object</span></h4>
 
 
 
@@ -527,8 +545,8 @@
 
 
 <div class="description">
-    <p>A rate limiter utility, to help limit the rate at which we send BLE messages
-over the socket to Scratch Link to a maximum number of sends per second.</p>
+    <p>If the motor has been turned on or is actively braking for a specific duration, this is the timeout ID for
+the end-of-action handler. Cancel this when changing plans.</p>
 </div>
 
 
@@ -537,7 +555,7 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
     <ul>
         <li>
             
-<span class="param-type"><a href="RateLimiter.html">RateLimiter</a></span>
+<span class="param-type">Object</span>
 
 
         </li>
@@ -550,7 +568,7 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
 
         
             
-<h4 class="name" id="_runtime"><span class="type-signature">(private) </span>_runtime<span class="type-signature"> :<a href="Runtime.html">Runtime</a></span></h4>
+<h4 class="name" id="_pendingDurationTimeoutStartTime"><span class="type-signature">(private) </span>_pendingDurationTimeoutStartTime<span class="type-signature"> :number</span></h4>
 
 
 
@@ -596,7 +614,7 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
 
 
 <div class="description">
-    <p>The Scratch 3.0 runtime used to trigger the green flag button.</p>
+    <p>The starting time for the pending duration timeout.</p>
 </div>
 
 
@@ -605,7 +623,7 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
     <ul>
         <li>
             
-<span class="param-type"><a href="Runtime.html">Runtime</a></span>
+<span class="param-type">number</span>
 
 
         </li>
@@ -618,7 +636,7 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
 
         
             
-<h4 class="name" id="_sensors"><span class="type-signature">(private) </span>_sensors<span class="type-signature"> :Object.&lt;string, number></span></h4>
+<h4 class="name" id="_pendingRotationDestination"><span class="type-signature">(private) </span>_pendingRotationDestination<span class="type-signature"> :number</span></h4>
 
 
 
@@ -664,7 +682,7 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
 
 
 <div class="description">
-    <p>The most recently received value for each sensor.</p>
+    <p>The target position of a turn-based command.</p>
 </div>
 
 
@@ -673,7 +691,7 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
     <ul>
         <li>
             
-<span class="param-type">Object.&lt;string, number></span>
+<span class="param-type">number</span>
 
 
         </li>
@@ -686,7 +704,280 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
 
         
             
-<h4 class="name" id="distance"><span class="type-signature"></span>distance<span class="type-signature"></span></h4>
+<h4 class="name" id="_pendingRotationPromise"><span class="type-signature">(private) </span>_pendingRotationPromise<span class="type-signature"> :Object</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>If the motor has been turned on run for a specific rotation, this is the function
+that will be called once Scratch VM gets a notification from the Move Hub.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_position"><span class="type-signature">(private) </span>_position<span class="type-signature"> :number</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>This motor's current relative position</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_power"><span class="type-signature">(private) </span>_power<span class="type-signature"> :number</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>This motor's current power level, in the range [0,100].</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_status"><span class="type-signature">(private) </span>_status<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Is this motor currently moving?</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="direction"><span class="type-signature"></span>direction<span class="type-signature"></span></h4>
 
 
 
@@ -740,7 +1031,7 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
 
         
             
-<h4 class="name" id="tiltX"><span class="type-signature"></span>tiltX<span class="type-signature"></span></h4>
+<h4 class="name" id="direction"><span class="type-signature"></span>direction<span class="type-signature"></span></h4>
 
 
 
@@ -794,7 +1085,547 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
 
         
             
-<h4 class="name" id="tiltY"><span class="type-signature"></span>tiltY<span class="type-signature"></span></h4>
+<h4 class="name" id="pendingDurationTimeoutDelay"><span class="type-signature"></span>pendingDurationTimeoutDelay<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="pendingDurationTimeoutStartTime"><span class="type-signature"></span>pendingDurationTimeoutStartTime<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="pendingRotationDestination"><span class="type-signature"></span>pendingRotationDestination<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="pendingRotationPromise"><span class="type-signature"></span>pendingRotationPromise<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="pendingRotationPromise"><span class="type-signature"></span>pendingRotationPromise<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="position"><span class="type-signature"></span>position<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="position"><span class="type-signature"></span>position<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="power"><span class="type-signature"></span>power<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="power"><span class="type-signature"></span>power<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="status"><span class="type-signature"></span>status<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="status"><span class="type-signature"></span>status<span class="type-signature"></span></h4>
 
 
 
@@ -857,7 +1688,7 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
 
     
 
-    <h4 class="name" id="_checkBatteryLevel"><span class="type-signature"></span>_checkBatteryLevel<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="_clearDurationTimeout"><span class="type-signature">(private) </span>_clearDurationTimeout<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -904,9 +1735,7 @@ over the socket to Scratch Link to a maximum number of sends per second.</p>
 
 
 <div class="description">
-    <p>Check the battery level on the WeDo 2.0. If the WeDo 2.0 has disconnected
-for some reason, the BLE socket will get an error back and automatically
-close the socket.</p>
+    <p>Clear the motor action timeout, if any. Safe to call even when there is no pending timeout.</p>
 </div>
 
 
@@ -938,7 +1767,7 @@ close the socket.</p>
 
     
 
-    <h4 class="name" id="_clearPort"><span class="type-signature">(private) </span>_clearPort<span class="signature">(connectID)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="_clearRotationState"><span class="type-signature">(private) </span>_clearRotationState<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -985,7 +1814,87 @@ close the socket.</p>
 
 
 <div class="description">
-    <p>Clear the sensor or motor present at port 1 or 2.</p>
+    <p>Clear the motor states related to rotation-based commands, if any.
+Safe to call even when there is no pending promise function.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_setNewDurationTimeout"><span class="type-signature">(private) </span>_setNewDurationTimeout<span class="signature">(callback, delay)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Set a new motor action timeout, after clearing an existing one if necessary.</p>
 </div>
 
 
@@ -1023,13 +1932,13 @@ close the socket.</p>
 
         <tr>
             
-                <td class="name"><code>connectID</code></td>
+                <td class="name"><code>callback</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">function</span>
 
 
             
@@ -1039,1276 +1948,14 @@ close the socket.</p>
 
             
 
-            <td class="description last"><p>the port to clear.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="_onConnect"><span class="type-signature">(private) </span>_onConnect<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Sets LED mode and initial color and starts reading data from peripheral after BLE has connected.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="_onMessage"><span class="type-signature">(private) </span>_onMessage<span class="signature">(base64)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Process the sensor data from the incoming BLE characteristic.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>base64</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the incoming BLE data.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="_registerSensorOrMotor"><span class="type-signature">(private) </span>_registerSensorOrMotor<span class="signature">(connectID, type)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Register a new sensor or motor connected at a port.  Store the type of
-sensor or motor internally, and then register for notifications on input
-values if it is a sensor.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>connectID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the port to register a sensor or motor on.</p></td>
+            <td class="description last"><p>to be called at the end of the timeout.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the type ID of the sensor or motor</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="connect"><span class="type-signature"></span>connect<span class="signature">(id)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Called by the runtime when user wants to connect to a certain WeDo 2.0 peripheral.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the id of the peripheral to connect to.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="disconnect"><span class="type-signature"></span>disconnect<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Disconnects from the current BLE socket.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="generateInputCommand"><span class="type-signature"></span>generateInputCommand<span class="signature">(connectID, type, mode, delta, units, enableNotifications)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Generate a WeDo 2.0 'Input Command' in the byte array format
-(COMMAND ID, COMMAND TYPE, CONNECT ID, TYPE ID, MODE, DELTA INTERVAL (4 BYTES),
-UNIT, NOTIFICATIONS ENABLED).</p>
-<p>This sends a command to the WeDo 2.0 that sets that input format
-of the specified inputs and sets value change notifications.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>connectID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the port (Connect ID) to send a command to.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the type of input sensor.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>mode</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the mode of the input sensor.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>delta</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the delta change needed to trigger notification.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>units</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the unit of the input sensor value.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>enableNotifications</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>whether to enable notifications.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a generated input command.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="generateOutputCommand"><span class="type-signature"></span>generateOutputCommand<span class="signature">(connectID, commandID, values)</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Generate a WeDo 2.0 'Output Command' in the byte array format
-(CONNECT ID, COMMAND ID, NUMBER OF BYTES, VALUES ...).</p>
-<p>This sends a command to the WeDo 2.0 to actuate the specified outputs.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>connectID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>the port (Connect ID) to send a command to.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>commandID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>the id of the byte command.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>values</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">array</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>the list of values to write to the command.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a generated output command.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="isConnected"><span class="type-signature"></span>isConnected<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Called by the runtime to detect whether the WeDo 2.0 peripheral is connected.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>the connected state.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="motor"><span class="type-signature"></span>motor<span class="signature">(index)</span><span class="type-signature"> &rarr; {<a href="WeDo2Motor.html">WeDo2Motor</a>}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Access a particular motor on this peripheral.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>index</code></td>
+                <td class="name"><code>delay</code></td>
             
 
             <td class="type">
@@ -2324,7 +1971,7 @@ of the specified inputs and sets value change notifications.</p>
 
             
 
-            <td class="description last"><p>the zero-based index of the desired motor.</p></td>
+            <td class="description last"><p>wait this many milliseconds before calling the callback.</p></td>
         </tr>
 
     
@@ -2344,30 +1991,6 @@ of the specified inputs and sets value change notifications.</p>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>the WeDo2Motor instance, if any, at that index.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="WeDo2Motor.html">WeDo2Motor</a></span>
-
-
-    </dd>
-</dl>
-
-    
 
 
         
@@ -2375,7 +1998,7 @@ of the specified inputs and sets value change notifications.</p>
 
     
 
-    <h4 class="name" id="playTone"><span class="type-signature"></span>playTone<span class="signature">(tone, milliseconds)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="_turnOn"><span class="type-signature">(private) </span>_turnOn<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -2422,7 +2045,7 @@ of the specified inputs and sets value change notifications.</p>
 
 
 <div class="description">
-    <p>Play a tone from the WeDo 2.0 peripheral for a specific amount of time.</p>
+    <p>Turn this motor on indefinitely</p>
 </div>
 
 
@@ -2435,76 +2058,6 @@ of the specified inputs and sets value change notifications.</p>
 
 
 
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>tone</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the pitch of the tone, in Hz.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>milliseconds</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the duration of the note, in milliseconds.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -2517,32 +2070,6 @@ of the specified inputs and sets value change notifications.</p>
 
 
 
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a promise of the completion of the play tone send operation.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
         
@@ -2550,7 +2077,7 @@ of the specified inputs and sets value change notifications.</p>
 
     
 
-    <h4 class="name" id="scan"><span class="type-signature"></span>scan<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="turnOff"><span class="type-signature"></span>turnOff<span class="signature">(useLimiter<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -2597,86 +2124,7 @@ of the specified inputs and sets value change notifications.</p>
 
 
 <div class="description">
-    <p>Called by the runtime when user wants to scan for a WeDo 2.0 peripheral.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(uuid, message, useLimiter<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Write a message to the WeDo 2.0 peripheral BLE socket.</p>
+    <p>Turn this motor off.</p>
 </div>
 
 
@@ -2714,76 +2162,6 @@ of the specified inputs and sets value change notifications.</p>
     </thead>
 
     <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>uuid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>the UUID of the characteristic to write to</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>the message to write.</p></td>
-        </tr>
-
     
 
         <tr>
@@ -2840,30 +2218,6 @@ of the specified inputs and sets value change notifications.</p>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a promise result of the write operation</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
         
@@ -2871,7 +2225,7 @@ of the specified inputs and sets value change notifications.</p>
 
     
 
-    <h4 class="name" id="setLED"><span class="type-signature"></span>setLED<span class="signature">(inputRGB)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="turnOnFor"><span class="type-signature"></span>turnOnFor<span class="signature">(milliseconds)</span><span class="type-signature"></span></h4>
 
     
 
@@ -2918,7 +2272,7 @@ of the specified inputs and sets value change notifications.</p>
 
 
 <div class="description">
-    <p>Set the WeDo 2.0 peripheral's LED to a specific color.</p>
+    <p>Turn this motor on for a specific duration.</p>
 </div>
 
 
@@ -2956,13 +2310,13 @@ of the specified inputs and sets value change notifications.</p>
 
         <tr>
             
-                <td class="name"><code>inputRGB</code></td>
+                <td class="name"><code>milliseconds</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">int</span>
+<span class="param-type">number</span>
 
 
             
@@ -2972,7 +2326,7 @@ of the specified inputs and sets value change notifications.</p>
 
             
 
-            <td class="description last"><p>a 24-bit RGB color in 0xRRGGBB format.</p></td>
+            <td class="description last"><p>run the motor for this long.</p></td>
         </tr>
 
     
@@ -2992,30 +2346,6 @@ of the specified inputs and sets value change notifications.</p>
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a promise of the completion of the set led send operation.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
         
@@ -3023,7 +2353,7 @@ of the specified inputs and sets value change notifications.</p>
 
     
 
-    <h4 class="name" id="setLEDMode"><span class="type-signature"></span>setLEDMode<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="turnOnForDegrees"><span class="type-signature"></span>turnOnForDegrees<span class="signature">(degrees, direction)</span><span class="type-signature"></span></h4>
 
     
 
@@ -3070,7 +2400,7 @@ of the specified inputs and sets value change notifications.</p>
 
 
 <div class="description">
-    <p>Sets the input mode of the LED to RGB.</p>
+    <p>Turn this motor on for a specific rotation in degrees.</p>
 </div>
 
 
@@ -3083,42 +2413,90 @@ of the specified inputs and sets value change notifications.</p>
 
 
 
+    <h5>Parameters:</h5>
+    
 
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
+        <th>Type</th>
 
         
-<div class="param-desc">
-    <ul>
-<li>a promise returned by the send operation.</li>
-</ul>
-</div>
 
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
         
-<span class="param-type">Promise</span>
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>degrees</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
 
 
-    </dd>
-</dl>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>run the motor for this amount of degrees.</p></td>
+        </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>direction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>rotate in this direction</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         
@@ -3126,7 +2504,7 @@ of the specified inputs and sets value change notifications.</p>
 
     
 
-    <h4 class="name" id="stopAll"><span class="type-signature"></span>stopAll<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="turnOnForever"><span class="type-signature"></span>turnOnForever<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -3173,7 +2551,7 @@ of the specified inputs and sets value change notifications.</p>
 
 
 <div class="description">
-    <p>Stop the tone playing and motors on the WeDo 2.0 peripheral.</p>
+    <p>Turn this motor on indefinitely</p>
 </div>
 
 
@@ -3198,291 +2576,6 @@ of the specified inputs and sets value change notifications.</p>
 
 
 
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="stopAllMotors"><span class="type-signature"></span>stopAllMotors<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Stop all the motors that are currently running.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="stopLED"><span class="type-signature"></span>stopLED<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Switch off the LED on the WeDo 2.0.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a promise of the completion of the stop led send operation.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="stopTone"><span class="type-signature"></span>stopTone<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Stop the tone playing from the WeDo 2.0 peripheral, if any.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a promise that the command sent.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
         
