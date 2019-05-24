@@ -22,11 +22,9 @@ const builtinExtensions = {
     videoSensing: () => require('../extensions/scratch3_video_sensing'),
     ev3: () => require('../extensions/scratch3_ev3'),
     makeymakey: () => require('../extensions/scratch3_makeymakey'),
-<<<<<<< HEAD
-=======
     boost: () => require('../extensions/scratch3_boost'),
->>>>>>> 565f11d4fcb8dd03ed532056ee20521970b6726a
-    gdxfor: () => require('../extensions/scratch3_gdx_for')
+    gdxfor: () => require('../extensions/scratch3_gdx_for'),
+    gdxsnd: () => require('../extensions/scratch3_gdx_snd')
 };
 
 /**
