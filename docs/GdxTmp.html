@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>SharedDispatch - Documentation</title>
+    <title>GdxTmp - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -31,7 +31,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">SharedDispatch</h1>
+    <h1 class="page-title">GdxTmp</h1>
     
 
     
@@ -44,11 +44,10 @@
 <header>
     
         <h2>
-        SharedDispatch
+        GdxTmp
         </h2>
         
-            <div class="class-description"><p>The SharedDispatch class is responsible for dispatch features shared by
-<a href="CentralDispatch.html">CentralDispatch</a> and <a href="WorkerDispatch.html">WorkerDispatch</a>.</p></div>
+            <div class="class-description"><p>Manage communication with a GDX-TMP peripheral over a Scratch Link client socket.</p></div>
         
     
 </header>
@@ -63,7 +62,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="SharedDispatch"><span class="type-signature"></span>new SharedDispatch<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="GdxTmp"><span class="type-signature"></span>new GdxTmp<span class="signature">(runtime, extensionId)</span><span class="type-signature"></span></h4>
 
     
 
@@ -109,6 +108,9 @@
 
 
 
+<div class="description">
+    <p>Construct a GDX-TMP communication object.</p>
+</div>
 
 
 
@@ -117,6 +119,79 @@
 
 
 
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>runtime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Runtime.html">Runtime</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the Scratch 3.0 runtime</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>extensionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the id of the extension</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -152,7 +227,7 @@
 
         
             
-<h4 class="name" id="callbacks"><span class="type-signature"></span>callbacks<span class="type-signature"> :Array.&lt;Array.&lt;function()>></span></h4>
+<h4 class="name" id="_device"><span class="type-signature">(private) </span>_device<span class="type-signature"> :Device</span></h4>
 
 
 
@@ -198,9 +273,7 @@
 
 
 <div class="description">
-    <p>List of callback registrations for promises waiting for a response from a call to a service on another
-worker. A callback registration is an array of [resolve,reject] Promise functions.
-Calls to local services don't enter this list.</p>
+    <p>An @vernier/godirect Device</p>
 </div>
 
 
@@ -209,7 +282,7 @@ Calls to local services don't enter this list.</p>
     <ul>
         <li>
             
-<span class="param-type">Array.&lt;Array.&lt;function()>></span>
+<span class="param-type">Device</span>
 
 
         </li>
@@ -222,7 +295,7 @@ Calls to local services don't enter this list.</p>
 
         
             
-<h4 class="name" id="nextResponseId"><span class="type-signature"></span>nextResponseId<span class="type-signature"> :int</span></h4>
+<h4 class="name" id="_extensionId"><span class="type-signature"></span>_extensionId<span class="type-signature"></span></h4>
 
 
 
@@ -268,7 +341,65 @@ Calls to local services don't enter this list.</p>
 
 
 <div class="description">
-    <p>The next response ID to be used.</p>
+    <p>The id of the extension this peripheral belongs to.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_runtime"><span class="type-signature">(private) </span>_runtime<span class="type-signature"> :<a href="Runtime.html">Runtime</a></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>The Scratch 3.0 runtime used to trigger the green flag button.</p>
 </div>
 
 
@@ -277,7 +408,143 @@ Calls to local services don't enter this list.</p>
     <ul>
         <li>
             
-<span class="param-type">int</span>
+<span class="param-type"><a href="Runtime.html">Runtime</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_scratchLinkSocket"><span class="type-signature">(private) </span>_scratchLinkSocket<span class="type-signature"> :<a href="BLE.html">BLE</a></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>The BluetoothLowEnergy connection socket for reading/writing peripheral data.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="BLE.html">BLE</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_sensors"><span class="type-signature">(private) </span>_sensors<span class="type-signature"> :Object.&lt;string, number></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>The most recently received value for each sensor.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object.&lt;string, number></span>
 
 
         </li>
@@ -299,7 +566,7 @@ Calls to local services don't enter this list.</p>
 
     
 
-    <h4 class="name" id="_deliverResponse"><span class="type-signature">(protected) </span>_deliverResponse<span class="signature">(responseId, message)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="_onConnect"><span class="type-signature">(private) </span>_onConnect<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -346,7 +613,7 @@ Calls to local services don't enter this list.</p>
 
 
 <div class="description">
-    <p>Deliver call response from a worker. This should only be called as the result of a message from a worker.</p>
+    <p>Starts reading data from peripheral after BLE has connected to it.</p>
 </div>
 
 
@@ -359,78 +626,6 @@ Calls to local services don't enter this list.</p>
 
 
 
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>responseId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the response ID of the callback set to call.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#DispatchResponseMessage">DispatchResponseMessage</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the message containing the response value(s).</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
 
 
 
@@ -450,7 +645,7 @@ Calls to local services don't enter this list.</p>
 
     
 
-    <h4 class="name" id="_getServiceProvider"><span class="type-signature">(abstract, protected) </span>_getServiceProvider<span class="signature">(service)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="_onSensorValueChanged"><span class="type-signature">(private) </span>_onSensorValueChanged<span class="signature">(sensor)</span><span class="type-signature"></span></h4>
 
     
 
@@ -497,7 +692,7 @@ Calls to local services don't enter this list.</p>
 
 
 <div class="description">
-    <p>Fetch the service provider object for a particular service name.</p>
+    <p>Handler for sensor value changes from the GdxTmp device.</p>
 </div>
 
 
@@ -535,13 +730,13 @@ Calls to local services don't enter this list.</p>
 
         <tr>
             
-                <td class="name"><code>service</code></td>
+                <td class="name"><code>sensor</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">object</span>
 
 
             
@@ -551,12 +746,299 @@ Calls to local services don't enter this list.</p>
 
             
 
-            <td class="description last"><p>the name of the service to look up</p></td>
+            <td class="description last"><p>device channel whose value has changed</p></td>
         </tr>
 
     
     </tbody>
 </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="connect"><span class="type-signature"></span>connect<span class="signature">(id)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Called by the runtime when user wants to connect to a certain peripheral.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the id of the peripheral to connect to.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="disconnect"><span class="type-signature"></span>disconnect<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Called by the runtime when a user exits the connection popup.
+Disconnect from the GDX-TMP.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="isConnected"><span class="type-signature"></span>isConnected<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return true if connected to the GDX-TMP device.</p>
+</div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -576,159 +1058,7 @@ Calls to local services don't enter this list.</p>
         
 <div class="param-desc">
     <ul>
-<li>the means to contact the service, if found</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="_isRemoteService"><span class="type-signature">(private) </span>_isRemoteService<span class="signature">(service)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Check if a particular service lives on another worker.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>service</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the service to check.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>true if the service is remote (calls must cross a Worker boundary), false otherwise.</li>
+<li>whether the GDX-TMP is connected.</li>
 </ul>
 </div>
 
@@ -754,7 +1084,7 @@ Calls to local services don't enter this list.</p>
 
     
 
-    <h4 class="name" id="_onDispatchMessage"><span class="type-signature">(abstract, private) </span>_onDispatchMessage<span class="signature">(worker, message)</span><span class="type-signature"> &rarr; {Promise|undefined}</span></h4>
+    <h4 class="name" id="scan"><span class="type-signature"></span>scan<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -801,7 +1131,7 @@ Calls to local services don't enter this list.</p>
 
 
 <div class="description">
-    <p>Handle a call message sent to the dispatch service itself</p>
+    <p>Called by the runtime when user wants to scan for a peripheral.</p>
 </div>
 
 
@@ -814,1503 +1144,18 @@ Calls to local services don't enter this list.</p>
 
 
 
-    <h5>Parameters:</h5>
-    
 
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
 
-        <th>Type</th>
 
-        
 
-        
 
-        <th class="last">Description</th>
-    </tr>
-    </thead>
 
-    <tbody>
-    
 
-        <tr>
-            
-                <td class="name"><code>worker</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Worker</span>
 
 
-            
-            </td>
 
-            
 
-            
-
-            <td class="description last"><p>the worker which sent the message.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#DispatchCallMessage">DispatchCallMessage</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the message to be handled.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a promise for the results of this operation, if appropriate</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-|
-
-<span class="param-type">undefined</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="_onMessage"><span class="type-signature">(protected) </span>_onMessage<span class="signature">(worker, event)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Handle a message event received from a connected worker.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>worker</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Worker</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the worker which sent the message, or the global object if running in a worker.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>event</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">MessageEvent</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the message event to be handled.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="_remoteCall"><span class="type-signature"></span>_remoteCall<span class="signature">(provider, service, method, &hellip;args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Like call, but force the call to be posted through a particular communication channel.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>provider</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>send the call through this object's <code>postMessage</code> function.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>service</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the name of the service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>method</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the name of the method.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>args</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the arguments to be copied to the method, if any.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a promise for the return value of the service method.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="_remoteTransferCall"><span class="type-signature"></span>_remoteTransferCall<span class="signature">(provider, service, method, transfer<span class="signature-attributes">opt</span>, &hellip;args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Like transferCall, but force the call to be posted through a particular communication channel.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>provider</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>send the call through this object's <code>postMessage</code> function.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>service</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the name of the service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>method</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the name of the method.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>transfer</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>objects to be transferred instead of copied. Must be present in <code>args</code> to be useful.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>args</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the arguments to be copied to the method, if any.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a promise for the return value of the service method.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="_storeCallbacks"><span class="type-signature">(protected) </span>_storeCallbacks<span class="signature">(resolve, reject)</span><span class="type-signature"> &rarr; {*}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Store callback functions pending a response message.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>resolve</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>function to call if the service method returns.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>reject</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>function to call if the service method throws.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a unique response ID for this set of callbacks. See _deliverResponse.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">*</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="call"><span class="type-signature"></span>call<span class="signature">(service, method, &hellip;args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Call a particular method on a particular service, regardless of whether that service is provided locally or on
-a worker. If the service is provided by a worker, the <code>args</code> will be copied using the Structured Clone
-algorithm, except for any items which are also in the <code>transfer</code> list. Ownership of those items will be
-transferred to the worker, and they should not be used after this call.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>dispatcher.call('vm', 'setData', 'cat', 42);
-     // this finds the worker for the 'vm' service, then on that worker calls:
-     vm.setData('cat', 42);</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>service</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the name of the service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>method</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the name of the method.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>args</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the arguments to be copied to the method, if any.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a promise for the return value of the service method.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="transferCall"><span class="type-signature"></span>transferCall<span class="signature">(service, method, transfer<span class="signature-attributes">opt</span>, &hellip;args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Call a particular method on a particular service, regardless of whether that service is provided locally or on
-a worker. If the service is provided by a worker, the <code>args</code> will be copied using the Structured Clone
-algorithm, except for any items which are also in the <code>transfer</code> list. Ownership of those items will be
-transferred to the worker, and they should not be used after this call.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>dispatcher.transferCall('vm', 'setData', [myArrayBuffer], 'cat', myArrayBuffer);
-     // this finds the worker for the 'vm' service, transfers `myArrayBuffer` to it, then on that worker calls:
-     vm.setData('cat', myArrayBuffer);</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>service</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the name of the service.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>method</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the name of the method.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>transfer</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>objects to be transferred instead of copied. Must be present in <code>args</code> to be useful.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>args</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the arguments to be copied to the method, if any.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <ul>
-<li>a promise for the return value of the service method.</li>
-</ul>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
         
