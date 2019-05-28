@@ -1,6 +1,6 @@
-const ArgumentType = require('../../extension-support/argument-type');
+// const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
-const log = require('../../util/log');
+// const log = require('../../util/log');
 const formatMessage = require('format-message');
 const BLE = require('../../io/ble');
 const godirect = require('@vernier/godirect/dist/godirect.min.umd.js');
