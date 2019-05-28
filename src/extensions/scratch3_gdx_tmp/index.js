@@ -1,6 +1,4 @@
-const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
-const log = require('../../util/log');
 const formatMessage = require('format-message');
 const BLE = require('../../io/ble');
 const godirect = require('@vernier/godirect/dist/godirect.min.umd.js');
@@ -35,25 +33,7 @@ const GDXTMP_SENSOR = {
  * Measurement period used to sample all channels.
  * @type {number}
  */
-const MEASUREMENT_PERIOD = 250;
-
-/**
- * Threshold for distance value, for the whenCloserThan hat block.
- * @type {number}
- */
-const PENCIL_THRESHOLD = 19;
-
-/**
- * Threshold for distance value, for the whenCloserThan hat block.
- * @type {number}
- */
-const NOTEBOOK_THRESHOLD = 38;
-
-/**
- * Threshold for distance value, for the whenCloserThan hat block.
- * @type {number}
- */
-const DESK_THRESHOLD = 100;
+const MEASUREMENT_PERIOD = 100;
 
 /**
  * Manage communication with a GDX-TMP peripheral over a Scratch Link client socket.
@@ -193,8 +173,8 @@ class GdxTmp {
     }
 
     /**
-     * Handler for sensor value changes from the goforce device.
-     * @param {object} sensor - goforce device sensor whose value has changed
+     * Handler for sensor value changes from the GdxTmp device.
+     * @param {object} sensor - device channel whose value has changed
      * @private
      */
     _onSensorValueChanged (sensor) {

@@ -201,8 +201,8 @@ class GdxMd {
     }
 
     /**
-     * Handler for sensor value changes from the goforce device.
-     * @param {object} sensor - goforce device sensor whose value has changed
+     * Handler for sensor value changes from the GdxMd device.
+     * @param {object} sensor - device channel whose value has changed
      * @private
      */
     _onSensorValueChanged (sensor) {
@@ -302,7 +302,7 @@ class Scratch3GdxMdBlocks {
          */
         this.runtime = runtime;
 
-        // Create a new GdxSnd peripheral instance
+        // Create a new GdxMd peripheral instance
         this._peripheral = new GdxMd(this.runtime, Scratch3GdxMdBlocks.EXTENSION_ID);
     }
 

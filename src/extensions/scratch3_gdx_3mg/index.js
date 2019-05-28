@@ -1,6 +1,4 @@
-// const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
-// const log = require('../../util/log');
 const formatMessage = require('format-message');
 const BLE = require('../../io/ble');
 const godirect = require('@vernier/godirect/dist/godirect.min.umd.js');
@@ -48,7 +46,7 @@ const MEASUREMENT_PERIOD = 100;
 class Gdx3mg {
 
     /**
-     * Construct a GDX-SND communication object.
+     * Construct a GDX-3MG communication object.
      * @param {Runtime} runtime - the Scratch 3.0 runtime
      * @param {string} extensionId - the id of the extension
      */
@@ -190,8 +188,8 @@ class Gdx3mg {
     }
 
     /**
-     * Handler for sensor value changes from the goforce device.
-     * @param {object} sensor - goforce device sensor whose value has changed
+     * Handler for sensor value changes from the Gdx3mg device.
+     * @param {object} sensor - device channel whose value has changed
      * @private
      */
     _onSensorValueChanged (sensor) {
@@ -274,7 +272,7 @@ class Scratch3Gdx3mgBlocks {
          */
         this.runtime = runtime;
 
-        // Create a new GdxSnd peripheral instance
+        // Create a new Gdx3mg peripheral instance
         this._peripheral = new Gdx3mg(this.runtime, Scratch3Gdx3mgBlocks.EXTENSION_ID);
     }
 
@@ -292,7 +290,7 @@ class Scratch3Gdx3mgBlocks {
                 {
                     opcode: 'getMagFieldMagnitude',
                     text: formatMessage({
-                        id: 'gdxsnd.getMagFieldMagnitude',
+                        id: 'gdx3mg.getMagFieldMagnitude',
                         default: 'total magnetic field',
                         description: 'total magnetic field'
                     }),
@@ -302,7 +300,7 @@ class Scratch3Gdx3mgBlocks {
                 {
                     opcode: 'getMagFieldX',
                     text: formatMessage({
-                        id: 'gdxsnd.getMagFieldX',
+                        id: 'gdx3mg.getMagFieldX',
                         default: 'x-axis',
                         description: 'x-axis magnetic field'
                     }),
@@ -311,7 +309,7 @@ class Scratch3Gdx3mgBlocks {
                 {
                     opcode: 'getMagFieldY',
                     text: formatMessage({
-                        id: 'gdxsnd.getMagFieldY',
+                        id: 'gdx3mg.getMagFieldY',
                         default: 'y-axis',
                         description: 'y-axis magnetic field'
                     }),
@@ -320,7 +318,7 @@ class Scratch3Gdx3mgBlocks {
                 {
                     opcode: 'getMagFieldZ',
                     text: formatMessage({
-                        id: 'gdxsnd.getMagFieldZ',
+                        id: 'gdx3mg.getMagFieldZ',
                         default: 'z-axis',
                         description: 'z-axis magnetic field'
                     }),
@@ -330,7 +328,7 @@ class Scratch3Gdx3mgBlocks {
                 {
                     opcode: 'getMagFieldHighMagnitude',
                     text: formatMessage({
-                        id: 'gdxsnd.getMagFieldHighMagnitude',
+                        id: 'gdx3mg.getMagFieldHighMagnitude',
                         default: 'total magnetic field (high)',
                         description: 'total magnetic field (high)'
                     }),
@@ -340,7 +338,7 @@ class Scratch3Gdx3mgBlocks {
                 {
                     opcode: 'getMagFieldHighX',
                     text: formatMessage({
-                        id: 'gdxsnd.getMagFieldHighX',
+                        id: 'gdx3mg.getMagFieldHighX',
                         default: 'x-axis (high)',
                         description: 'x-axis magnetic field (high)'
                     }),
@@ -349,7 +347,7 @@ class Scratch3Gdx3mgBlocks {
                 {
                     opcode: 'getMagFieldHighY',
                     text: formatMessage({
-                        id: 'gdxsnd.getMagFieldHighY',
+                        id: 'gdx3mg.getMagFieldHighY',
                         default: 'y-axis (high)',
                         description: 'y-axis magnetic field (high)'
                     }),
@@ -358,7 +356,7 @@ class Scratch3Gdx3mgBlocks {
                 {
                     opcode: 'getMagFieldHighZ',
                     text: formatMessage({
-                        id: 'gdxsnd.getMagFieldHighZ',
+                        id: 'gdx3mg.getMagFieldHighZ',
                         default: 'z-axis (high)',
                         description: 'z-axis magnetic field (high)'
                     }),
