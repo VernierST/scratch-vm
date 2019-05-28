@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>BlockCached - Documentation</title>
+    <title>Scratch3GdxMdBlocks - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -31,7 +31,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">BlockCached</h1>
+    <h1 class="page-title">Scratch3GdxMdBlocks</h1>
     
 
     
@@ -44,18 +44,10 @@
 <header>
     
         <h2>
-        BlockCached
+        Scratch3GdxMdBlocks
         </h2>
         
-            <div class="class-description"><p>A execute.js internal representation of a block to reduce the time spent in
-execute as the same blocks are called the most.</p>
-<p>With the help of the Blocks class create a mutable copy of block
-information. The members of BlockCached derived values of block information
-that does not need to be reevaluated until a change in Blocks. Since Blocks
-handles where the cache instance is stored, it drops all cache versions of a
-block when any change happens to it. This way we can quickly execute blocks
-and keep perform the right action according to the current block information
-in the editor.</p></div>
+            <div class="class-description"><p>Scratch 3.0 blocks to interact with a GDX-MD peripheral.</p></div>
         
     
 </header>
@@ -70,7 +62,7 @@ in the editor.</p></div>
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="BlockCached"><span class="type-signature"></span>new BlockCached<span class="signature">(blockContainer, cached)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Scratch3GdxMdBlocks"><span class="type-signature"></span>new Scratch3GdxMdBlocks<span class="signature">(runtime)</span><span class="type-signature"></span></h4>
 
     
 
@@ -116,6 +108,10 @@ in the editor.</p></div>
 
 
 
+<div class="description">
+    <p>Construct a set of GDX-MD blocks.</p>
+</div>
+
 
 
 
@@ -151,13 +147,13 @@ in the editor.</p></div>
 
         <tr>
             
-                <td class="name"><code>blockContainer</code></td>
+                <td class="name"><code>runtime</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="Blocks.html">Blocks</a></span>
+<span class="param-type"><a href="Runtime.html">Runtime</a></span>
 
 
             
@@ -167,30 +163,7 @@ in the editor.</p></div>
 
             
 
-            <td class="description last"><p>the related Blocks instance</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>cached</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>default set of cached values</p></td>
+            <td class="description last"><p>the Scratch 3.0 runtime.</p></td>
         </tr>
 
     
@@ -231,7 +204,115 @@ in the editor.</p></div>
 
         
             
-<h4 class="name" id="_argValues"><span class="type-signature"></span>_argValues<span class="type-signature"> :object</span></h4>
+<h4 class="name" id=".EXTENSION_ID"><span class="type-signature">(static) </span>EXTENSION_ID<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".EXTENSION_NAME"><span class="type-signature">(static) </span>EXTENSION_NAME<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="runtime"><span class="type-signature"></span>runtime<span class="type-signature"> :<a href="Runtime.html">Runtime</a></span></h4>
 
 
 
@@ -277,8 +358,7 @@ in the editor.</p></div>
 
 
 <div class="description">
-    <p>An arguments object for block implementations. All executions of this
-specific block will use this objecct.</p>
+    <p>The Scratch 3.0 runtime.</p>
 </div>
 
 
@@ -287,1114 +367,121 @@ specific block will use this objecct.</p>
     <ul>
         <li>
             
+<span class="param-type"><a href="Runtime.html">Runtime</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="getInfo"><span class="type-signature"></span>getInfo<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>metadata for this extension and its blocks.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">object</span>
 
 
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_blockFunction"><span class="type-signature">(nullable) </span>_blockFunction<span class="type-signature"> :function</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+    </dd>
 </dl>
 
-
-
-
-
-<div class="description">
-    <p>The block opcode's implementation function.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">function</span>
-
-
-        </li>
-    </ul>
-
-
-
-
+    
 
 
         
-            
-<h4 class="name" id="_definedBlockFunction"><span class="type-signature"></span>_definedBlockFunction<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Is the block function defined for this opcode?</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_fields"><span class="type-signature"></span>_fields<span class="type-signature"> :object</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>A copy of the block's fields that may be modified.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_inputs"><span class="type-signature"></span>_inputs<span class="type-signature"> :object</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>A copy of the block's inputs that may be modified.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_isHat"><span class="type-signature"></span>_isHat<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Is the opcode a hat (event responder) block.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_isShadowBlock"><span class="type-signature"></span>_isShadowBlock<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Is this block a block with no function but a static value to return.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_ops"><span class="type-signature"></span>_ops<span class="type-signature"> :Array.&lt;<a href="BlockCached.html">BlockCached</a>></span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>A sequence of non-shadow operations that can must be performed. This
-list recreates the order this block and its children are executed.
-Since the order is always the same we can safely store that order
-and iterate over the operations instead of dynamically walking the
-tree every time.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Array.&lt;<a href="BlockCached.html">BlockCached</a>></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_parentKey"><span class="type-signature"></span>_parentKey<span class="type-signature"> :string</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>The inputs key the parent refers to this BlockCached by.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_parentValues"><span class="type-signature"></span>_parentValues<span class="type-signature"> :object</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>The target object where the parent wants the resulting value stored
-with _parentKey as the key.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_shadowOps"><span class="type-signature"></span>_shadowOps<span class="type-signature"> :Array.&lt;<a href="BlockCached.html">BlockCached</a>></span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>A sequence of shadow value operations that can be performed in any
-order and are easier to perform given that they are static.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Array.&lt;<a href="BlockCached.html">BlockCached</a>></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="_shadowValue"><span class="type-signature">(nullable) </span>_shadowValue<span class="type-signature"> :any</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>The static value of this block if it is a shadow block.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">any</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="fields"><span class="type-signature"></span>fields<span class="type-signature"> :object</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Original block object containing argument values for static fields.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="id"><span class="type-signature"></span>id<span class="type-signature"> :string</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Block id in its parent set of blocks.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="inputs"><span class="type-signature"></span>inputs<span class="type-signature"> :object</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Original block object containing argument values for executable inputs.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="mutation"><span class="type-signature">(nullable) </span>mutation<span class="type-signature"> :object</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Procedure mutation.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="opcode"><span class="type-signature"></span>opcode<span class="type-signature"> :string</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>Block operation code for this block.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">string</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-    
-
     
 
     
