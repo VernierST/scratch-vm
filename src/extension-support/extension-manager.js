@@ -25,7 +25,8 @@ const builtinExtensions = {
     boost: () => require('../extensions/scratch3_boost'),
     gdxfor: () => require('../extensions/scratch3_gdx_for'),
     gdxsnd: () => require('../extensions/scratch3_gdx_snd'),
-    gdxmd: () => require('../extensions/scratch3_gdx_md')
+    gdxmd: () => require('../extensions/scratch3_gdx_md'),
+    gdx3mg: () => require('../extensions/scratch3_gdx_3mg')
 };
 
 /**
